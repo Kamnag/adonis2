@@ -1,0 +1,44 @@
+'use strict'
+
+const Schema = use('Schema')
+
+class ProfileSchema extends Schema {
+  up () {
+    this.create('profiles', (table) => {
+      table.increments()
+      table.string('post', 80)
+      table.timestamps()
+    })
+  }
+
+  down () {
+    this.drop('profiles')
+  }
+}
+
+module.exports = ProfileSchema
+
+
+'use strict'
+
+const Schema = use('Schema')
+
+class UserSchema extends Schema {
+  up () {
+    this.create('users', (table) => {
+      table.increments('id')
+      table.string('username', 80)
+      table.string('email', 254)
+      table.string('password', 60)
+      //.unique()
+      //.notNullable()
+      table.timestamps()
+    })
+  }
+
+  down () {
+    this.drop('users')
+  }
+}
+
+module.exports = UserSchema
